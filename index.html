@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Girl ♡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<header>
+    <h1>My Favorite Girl ♡</h1>
+    <p>Every picture is a memory I never want to lose.</p>
+
+    <label class="upload-btn" for="photoUpload">＋ Add Photos</label>
+    <input type="file" id="photoUpload" accept="image/*" multiple hidden>
+</header>
+
+<main>
+
+    <!-- ROMANTIC PHOTO SLIDESHOW -->
+    <section class="slideshow-section">
+
+        <h2>My Favorite Girl ♡</h2>
+        <p class="slide-subtitle">A thousand memories, one favorite person.</p>
+
+        <div class="slideshow-container" id="slideshow">
+
+            <div class="slides" id="slides">
+
+                <div class="slide active">
+                    <img src="images/pictures1.jpg" alt="My girl">
+                    <div class="caption">My favorite person in every lifetime. ♡</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures2.jpg" alt="My girl">
+                    <div class="caption">The prettiest part of my everyday. ♡</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures3.jpg" alt="My girl">
+                    <div class="caption">A thousand pictures, never enough of you.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures4.jpg" alt="My girl">
+                    <div class="caption">My favorite view will always be you.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures5.jpg" alt="My girl">
+                    <div class="caption">If happiness had a face, it would be yours.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures6.jpg" alt="My girl">
+                    <div class="caption">My little piece of happiness. ♡</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures7.jpg" alt="My girl">
+                    <div class="caption">My favorite collection of memories.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures8.jpg" alt="My girl">
+                    <div class="caption">Every version of you is my favorite.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures9.jpg" alt="My girl">
+                    <div class="caption">You make ordinary days special.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures10.jpg" alt="My girl">
+                    <div class="caption">Another reason to love you. ♡</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures11.jpg" alt="My girl">
+                    <div class="caption">My pretty girl.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures12.jpg" alt="My girl">
+                    <div class="caption">My daily dose of happiness.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures13.jpg" alt="My girl">
+                    <div class="caption">Effortlessly beautiful, always.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures14.jpg" alt="My girl">
+                    <div class="caption">Forever my favorite subject.</div>
+                </div>
+
+                <div class="slide">
+                    <img src="images/pictures15.jpg" alt="My girl">
+                    <div class="caption">Too pretty not to be photographed. ♡</div>
+                </div>
+
+            </div>
+
+            <button class="prev" onclick="changeSlide(-1)" aria-label="Previous photo">❮</button>
+            <button class="next" onclick="changeSlide(1)" aria-label="Next photo">❯</button>
+
+            <div class="slide-counter" id="slideCounter">1 / 15</div>
+
+        </div>
+
+        <div class="slide-dots" id="slideDots"></div>
+
+        <p class="bottom-message">
+            No matter how many pictures I take, you'll always be my favorite. ♡
+        </p>
+
+    </section>
+
+    <!-- UPLOADED PHOTOS -->
+    <section class="uploaded-section" id="uploadedSection" hidden>
+        <h2>New Memories ♡</h2>
+        <p class="description">Edit the caption or remove a photo anytime.</p>
+        <div class="gallery" id="gallery"></div>
+    </section>
+
+</main>
+
+<footer>
+    Made with love, just for you ♡
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

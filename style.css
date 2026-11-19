@@ -1,0 +1,408 @@
+/* ==================================
+   ROMANTIC PHOTO ALBUM - FULL CSS
+   (replace your whole old style.css)
+================================== */
+
+:root {
+    --pink: #e8a6b7;
+    --dark-pink: #b86e89;
+    --deep-pink: #a85e78;
+    --light-pink: #fff0f4;
+    --cream: #fffaf8;
+    --brown: #76545a;
+    --white: #ffffff;
+    --shadow: 184, 110, 137;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: var(--brown);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 10% 10%, #ffe1eb 0, transparent 30%),
+        radial-gradient(circle at 90% 80%, #fce2e8 0, transparent 30%),
+        linear-gradient(135deg, #fff9f8, #fff0f4, #fce8ed);
+    background-attachment: fixed;
+}
+
+/* ---------- Floating hearts ---------- */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -40px;
+    color: var(--pink);
+    opacity: 0;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: .55; }
+    100% { transform: translateY(-110vh) translateX(40px) rotate(25deg); opacity: 0; }
+}
+
+/* ---------- Header ---------- */
+header {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 75px 20px 65px;
+    background: linear-gradient(135deg, #f8dce5dd, #fff0f4dd);
+    border-bottom: 1px solid #ffffffaa;
+    backdrop-filter: blur(6px);
+}
+
+header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(35px, 6vw, 65px);
+    color: var(--deep-pink);
+    margin: 0 0 15px;
+    text-shadow: 2px 3px 10px #d99aaf55;
+    animation: titleAppear 1.2s ease;
+}
+
+header p {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #986d79;
+    margin: 0 0 30px;
+}
+
+/* ---------- Upload button ---------- */
+.upload-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #e9a6bb, #c87996);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 8px 22px #d58ca455;
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.upload-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 30px #ce789955;
+}
+
+/* ---------- Main ---------- */
+main {
+    position: relative;
+    z-index: 1;
+    max-width: 1250px;
+    width: 92%;
+    margin: 60px auto;
+}
+
+main h2 {
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 35px;
+    color: var(--deep-pink);
+    margin: 0 0 8px;
+}
+
+.description,
+.slide-subtitle {
+    text-align: center;
+    color: #a17c85;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.slideshow-section { text-align: center; padding: 20px 0 50px; }
+
+/* ---------- Slideshow frame ---------- */
+.slideshow-container {
+    position: relative;
+    width: min(100%, 650px);
+    aspect-ratio: 4 / 5;            /* consistent scrapbook frame */
+    margin: 35px auto 10px;
+    overflow: hidden;
+    border: 8px solid #fff;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #f8dce5, #f5e9ec);
+    box-shadow:
+        0 15px 45px rgba(var(--shadow), .2),
+        0 0 0 1px #e9b5c555;
+    transition: box-shadow .4s ease;
+}
+
+.slideshow-container:hover {
+    box-shadow:
+        0 20px 55px rgba(var(--shadow), .33),
+        0 0 25px #e8a6b766;
+}
+
+.slides { position: absolute; inset: 0; }
+
+/* ---------- Slides ---------- */
+.slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+    background: #f8e8ed;
+}
+
+/* Blurred copy of the same photo fills empty space (set by script.js) */
+.slide::before {
+    content: "";
+    position: absolute;
+    inset: -30px;
+    background-image: var(--photo);
+    background-size: cover;
+    background-position: center;
+    filter: blur(28px) saturate(1.2) brightness(1.05);
+    opacity: .75;
+}
+
+.slide.active {
+    display: block;
+    animation: slideReveal .8s ease;
+}
+
+.slide img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;            /* full photo, never stretched or cropped */
+    object-position: center;
+}
+
+/* ---------- Captions ---------- */
+.caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 45px 20px 25px;
+    color: #fff;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(16px, 2.5vw, 21px);
+    text-align: center;
+    text-shadow: 0 2px 5px #0008;
+    background: linear-gradient(transparent, rgba(75, 34, 49, .82));
+}
+
+/* ---------- Prev / Next ---------- */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 1px solid #ffffff88;
+    border-radius: 50%;
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    color: var(--dark-pink);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 5;
+    transition: background .3s, color .3s, transform .3s, box-shadow .3s;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.prev:hover,
+.next:hover {
+    background: #d986a2;
+    color: #fff;
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 5px 20px #b86e8966;
+}
+
+.prev:focus-visible,
+.next:focus-visible,
+.dot:focus-visible,
+.delete-btn:focus-visible,
+.upload-btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px var(--dark-pink);
+}
+
+/* ---------- Counter ---------- */
+.slide-counter {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    color: var(--deep-pink);
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 5;
+}
+
+/* ---------- Dots ---------- */
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px auto;
+    max-width: 650px;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: #e9c1ce;
+    cursor: pointer;
+    transition: width .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+.dot.active {
+    width: 28px;
+    background: #bd718b;
+    box-shadow: 0 0 12px #d68ca5;
+}
+
+.bottom-message {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: #a17c85;
+    margin: 30px 0 0;
+}
+
+/* ---------- Uploaded gallery ---------- */
+.uploaded-section { padding-top: 20px; }
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.photo-card {
+    padding: 12px;
+    background: #ffffffd9;
+    border: 1px solid #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(var(--shadow), .1);
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(var(--shadow), .2);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+    object-position: center;
+    background: #f8e8ed;
+    border-radius: 12px;
+}
+
+.photo-card input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #f1d3dd;
+    border-radius: 10px;
+    background: #fff9fb;
+    color: var(--brown);
+    font: inherit;
+    outline-color: #d986a2;
+}
+
+.delete-btn {
+    padding: 9px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #d986a2;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+    transition: background .3s;
+}
+
+.delete-btn:hover { background: #ae5e7b; }
+
+/* ---------- Footer ---------- */
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 35px 15px;
+    background: #f5dce5;
+    color: #9b6577;
+    letter-spacing: 1px;
+}
+
+/* ---------- Animations ---------- */
+@keyframes slideReveal {
+    from { opacity: 0; transform: scale(1.04); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes titleAppear {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+    header { padding: 55px 15px; }
+    header p { font-size: 13px; }
+    main { width: 94%; margin: 35px auto; }
+    main h2 { font-size: 27px; }
+
+    .slideshow-container {
+        width: 100%;
+        border-width: 5px;
+        border-radius: 18px;
+    }
+
+    .prev,
+    .next { width: 38px; height: 38px; font-size: 16px; }
+    .caption { padding: 35px 12px 20px; }
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .photo-card { padding: 7px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hearts { display: none; }
+}
